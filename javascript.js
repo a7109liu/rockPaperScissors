@@ -1,7 +1,6 @@
 let comp, player, compWins = 0, playerWins = 0;
 
 
-
 function computerPlay() {
     let randNum = Math.floor(Math.random()*100 + 1);
     
@@ -42,49 +41,103 @@ function computerPlay() {
     
 // }
 
+const lowerBody = document.querySelector('.lowerBody');
+const msg = document.createElement('p');
+msg.classList.add('msg');
+
 function playRound(playerSelection, computerSelection) {
+    
+    // const lowerBody = document.querySelector('.lowerBody');
+    // const msg = document.createElement('p');
+    // msg.classList.add('msg');
+    
+    
     if (comp == player) {
-        const lowerBody = document.querySelector('.lowerBody');
-        const msg = document.createElement('p');
-        msg.classList.add('msg');
         msg.textContent = "It is a tie!";
 
         lowerBody.appendChild(msg);
         //console.log('It is a tie!');
     }
     else if (comp == 'paper' && player == 'rock') {
-        console.log('The computer wins: Paper beats rock!');
+        
+        msg.textContent = 'The computer wins: Paper beats rock!';
+
+        lowerBody.appendChild(msg);
+        //console.log('The computer wins: Paper beats rock!');
         compWins += 1;
     }
     else if (player == 'paper' && comp == 'rock') {
-        console.log('You win: Paper beats rock!');
+        
+        msg.textContent = 'You win: Paper beats rock!';
+
+        //lowerBody.appendChild(msg);
+        //console.log('You win: Paper beats rock!');
         playerWins += 1;
     }
     else if (comp == 'rock' && player == 'scissors') {
-        console.log('The computer wins: Rock beats scissors!');
+        
+        msg.textContent = 'The computer wins: Rock beats scissors!';
+
+        //lowerBody.appendChild(msg);
+        //console.log('The computer wins: Rock beats scissors!');
         compWins += 1;
     }
     else if (player == 'rock' && comp == 'scissors') {
-        console.log('You win: Rock beats scissors!');
+        
+        msg.textContent = 'You win: Rock beats scissors!';
+
+        //lowerBody.appendChild(msg);
+        //console.log('You win: Rock beats scissors!');
         playerWins += 1;
     }
     else if (comp == 'scissors' && player == 'paper') {
-        console.log('The computer wins: Scissosr beats paper!');
+        
+        msg.textContent = 'The computer wins: Scissor beats paper!';
+
+        //lowerBody.appendChild(msg);
+        //console.log('The computer wins: Scissosr beats paper!');
         compWins += 1;
     }
     else if (player == 'scissors' && comp == 'paper') {
-        console.log('You win: Scissors beats paper!');
+        
+        msg.textContent = 'You win: Scissor beats paper!';
+
+        //lowerBody.appendChild(msg);
+        //console.log('You win: Scissors beats paper!');
         playerWins += 1;
     }
-
 }
 
 const playerRock = document.querySelector('.rock');
-
 playerRock.addEventListener('click', () => {
     player = 'rock';
+    playerRock.classList.add('playing');
     playRound(player, computerPlay());
 });
+
+const playerPaper = document.querySelector('.paper');
+playerPaper.addEventListener('click', () => {
+    player = 'paper';
+    playerPaper.classList.add('playing');
+    playRound(player, computerPlay());
+});
+
+const playerScissors = document.querySelector('.scissors');
+playerScissors.addEventListener('click', () => {
+    player = 'scissors';
+    playerScissors.classList.add('playing');
+    playRound(player, computerPlay());
+});
+
+function removeTransition(e) {
+    this.classList.remove('playing');
+}
+
+const btn = document.querySelectorAll('button');
+btn.forEach(button => button.addEventListener('transitionend', removeTransition));
+
+
+
 
 
 
