@@ -1,6 +1,7 @@
 let comp, player, compWins = 0, playerWins = 0;
 
 
+
 function computerPlay() {
     let randNum = Math.floor(Math.random()*100 + 1);
     
@@ -22,28 +23,34 @@ function computerPlay() {
     //console.log(compChoice);
 }
 
-function playerPlay() {
-    let playerChoice = prompt("Choose Rock, Paper, or Scissors!");
-    let playerChoicelc = playerChoice.toLowerCase();
-    //console.log(playerChoicelc);
-    if (playerChoicelc == 'rock') {
-        player = 'rock';
-        return player;
-    }
-    else if (playerChoicelc == 'paper') {
-        player = 'paper';
-        return player;
-    }
-    else {
-        player = 'scissors';
-        return player;
-    }
+// function playerPlay() {
+//     let playerChoice = prompt("Choose Rock, Paper, or Scissors!");
+//     let playerChoicelc = playerChoice.toLowerCase();
+//     //console.log(playerChoicelc);
+//     if (playerChoicelc == 'rock') {
+//         player = 'rock';
+//         return player;
+//     }
+//     else if (playerChoicelc == 'paper') {
+//         player = 'paper';
+//         return player;
+//     }
+//     else {
+//         player = 'scissors';
+//         return player;
+//     }
     
-}
+// }
 
 function playRound(playerSelection, computerSelection) {
     if (comp == player) {
-        console.log('It is a tie!');
+        const lowerBody = document.querySelector('.lowerBody');
+        const msg = document.createElement('p');
+        msg.classList.add('msg');
+        msg.textContent = "It is a tie!";
+
+        lowerBody.appendChild(msg);
+        //console.log('It is a tie!');
     }
     else if (comp == 'paper' && player == 'rock') {
         console.log('The computer wins: Paper beats rock!');
@@ -72,18 +79,33 @@ function playRound(playerSelection, computerSelection) {
 
 }
 
-function game() {
-    for (let i = 0; i < 5; i++) {
-        playRound(playerPlay(), computerPlay());
-        console.log(`  Computer: ${comp}`);
-        console.log(`  Player: ${player}`);    
-    }
-    
-    console.log(`Computer's score: ${compWins}`);
-    console.log(`Player's score: ${playerWins}`);
-}
+const playerRock = document.querySelector('.rock');
 
-game();
+playerRock.addEventListener('click', () => {
+    player = 'rock';
+    playRound(player, computerPlay());
+});
+
+
+
+
+
+
+
+// function game() {
+//     for (let i = 0; i < 5; i++) {
+//         playRound(playerPlay(), computerPlay());
+//         console.log(`  Computer: ${comp}`);
+//         console.log(`  Player: ${player}`);    
+//     }
+    
+//     console.log(`Computer's score: ${compWins}`);
+//     console.log(`Player's score: ${playerWins}`);
+// }
+
+// game();
+
+//playRound(playerPlay(), computerPlay());
 
 
 
