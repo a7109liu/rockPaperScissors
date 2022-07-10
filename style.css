@@ -14,15 +14,16 @@ body {
 .body {
     display: flex;
     justify-content: space-evenly;
-    padding: 100px;
+    padding: 50px;
     padding-left: 50px;
-    
 }
 
 button {
     font-family: Roboto, sans-serif;
+    font-weight: bold;
     font-size: x-large;
     background: #3882F6;
+    color: white;
     height: 100px;
     width: 200px;
     border-radius: 8px;
@@ -30,13 +31,35 @@ button {
     
 }
 
+.wins {
+    display:flex;
+    justify-content: center;
+    font-size: xx-large;
+    margin: 40px 0px 0px 0px;
+}
+
 .playing {
-    border-color:aqua;
-    box-shadow: 0 0 1rem aqua;
+    border-color:rgb(253, 151, 125);
+    box-shadow: 0 0 1rem rgb(250, 105, 95);
 }
 
 .lowerBody {
     display: flex;
     justify-content: center;
     font-size:xx-large
+}
+
+.winCount {
+    display: inline-flex;
+    width: 900px;
+    justify-content: center;
+    gap: 300px;
+    font-size:xx-large;
+}
+
+.msgWin {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    font-size: xxx-large;
 }
